@@ -1,0 +1,22 @@
+metadata.format.version = "1.1"
+
+[versions]
+
+# CompileOnly dependencies
+paper = "1.16.5-R0.1-SNAPSHOT"
+runpaper = "2.2.0"
+
+# Gradle Plugins
+shadow = "8.1.1"
+
+[libraries]
+
+# Compile Only Dependencies
+paper-api = { group = "com.destroystokyo.paper", name = "paper-api", version.ref = "paper" }
+
+[plugins]
+
+shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }
+runpaper = { id = "xyz.jpenilla.run-paper", version.ref = "runpaper" }
+pluginyml-bukkit = { id = "net.minecrell.plugin-yml.bukkit", version = "0.6.0" }
+idea-ext = { id = "org.jetbrains.gradle.plugin.idea-ext", version = "1.1.7" }
