@@ -34,7 +34,7 @@ tasks {
 
 bukkit {
     name = "SignedVelocity-Legacy"
-    main = "io.github._4drian3d.signedvelocity.legacy.SignedVelocityBukkit"
+    main = "io.github._4drian3d.signedvelocity.legacy.bukkit.SignedVelocity"
     authors = listOf("4drian3d")
 
     foliaSupported = false
