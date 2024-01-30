@@ -15,7 +15,7 @@ public class PlayerQuitListener implements Listener {
   }
 
   @EventHandler
-  public void onqit(PlayerQuitEvent event) {
+  public void onquit(PlayerQuitEvent event) {
     final UUID playerUUID = event.getPlayer().getUniqueId();
     plugin.getChatQueue().removeData(playerUUID);
     plugin.getCommandQueue().removeData(playerUUID);

@@ -6,6 +6,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
 public class PlayerCommandListener implements Listener {
   private final SignedVelocity plugin;
 
@@ -14,7 +18,7 @@ public class PlayerCommandListener implements Listener {
   }
 
   @EventHandler
-  public void onComanD(PlayerCommandPreprocessEvent event) {
+  public void onCommanD(PlayerCommandPreprocessEvent event) throws ExecutionException, InterruptedException, TimeoutException {
     Player player = event.getPlayer();
     plugin.getCommandQueue().dataFrom(player.getUniqueId())
             .nextResult()
@@ -27,6 +31,6 @@ public class PlayerCommandListener implements Listener {
                   event.setMessage(modified);
                 }
               }
-            }).join();
+            }).get(50, TimeUnit.MILLISECONDS);
   }
 }

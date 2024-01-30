@@ -6,6 +6,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
 public class PlayerChatListener implements Listener {
   private final SignedVelocity plugin;
 
@@ -14,7 +18,7 @@ public class PlayerChatListener implements Listener {
   }
 
   @EventHandler
-  public void onChat(AsyncPlayerChatEvent event) {
+  public void onChat(AsyncPlayerChatEvent event) throws ExecutionException, InterruptedException, TimeoutException {
    Player player = event.getPlayer();
     plugin.getChatQueue().dataFrom(player.getUniqueId())
             .nextResult()
@@ -27,6 +31,6 @@ public class PlayerChatListener implements Listener {
                   event.setMessage(modifiedChat);
                 }
               }
-            }).join();
+            }).get(50, TimeUnit.MILLISECONDS);
   }
 }
